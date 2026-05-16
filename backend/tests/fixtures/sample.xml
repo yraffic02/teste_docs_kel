@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documento>
+  <cliente>
+    <nome>Maria Oliveira</nome>
+    <cpf>529.982.247-25</cpf>
+    <email>maria@exemplo.com</email>
+  </cliente>
+  <contrato>
+    <numero>CT-2024-001</numero>
+    <valor currency="BRL">15000.00</valor>
+    <data_assinatura>15/03/2024</data_assinatura>
+    <data_vigencia>31/12/2026</data_vigencia>
+  </contrato>
+  <empresa>
+    <razao_social>Tech Solutions Ltda</razao_social>
+    <cnpj>39.958.923/0001-60</cnpj>
+  </empresa>
+</documento>

@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Processador Documental",
+    "slug": "document-processor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": ["ios", "android", "web"],
+    "ios": { "supportsTablet": true },
+    "web": {
+      "favicon": "./src/assets/favicon.png",
+      "bundler": "metro"
+    }
+  }
+}
