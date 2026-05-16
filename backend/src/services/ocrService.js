@@ -11,8 +11,8 @@ async function extractText(filePath, mimeType) {
   if (mimeType === "application/pdf") {
     return extractPdfText(filePath);
   }
-  if (mimeType === "image/png") {
-    return extractPngText(filePath);
+  if (mimeType === "image/png" || mimeType === "image/jpeg") {
+    return extractImageText(filePath);
   }
   throw new Error(`Mime type não suportado: ${mimeType}`);
 }
@@ -82,7 +82,7 @@ async function extractPdfViaOcr(filePath) {
   }
 }
 
-async function extractPngText(filePath) {
+async function extractImageText(filePath) {
   const worker = await createWorker("por");
   try {
     const { data } = await worker.recognize(filePath);
@@ -101,4 +101,4 @@ async function processDocument(document, fullPath) {
   return { text, patterns };
 }
 
-module.exports = { extractText, extractPdfText, extractPngText, processDocument };
+module.exports = { extractText, extractPdfText, extractImageText, processDocument };

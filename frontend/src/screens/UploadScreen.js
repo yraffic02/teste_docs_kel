@@ -17,7 +17,7 @@ export default function UploadScreen() {
     try {
       const { DocumentPicker } = require("expo-document-picker");
       const result = await DocumentPicker.getDocumentAsync({
-        type: ["application/pdf", "image/png", "application/xml"],
+        type: ["application/pdf", "image/png", "image/jpeg", "application/xml"],
         multiple: true,
       });
       if (!result.canceled) setFiles(result.assets);
@@ -89,7 +89,7 @@ export default function UploadScreen() {
           ref={fileInputRef}
           type="file"
           multiple
-          accept=".pdf,.png,.xml,application/pdf,image/png,application/xml"
+          accept=".pdf,.png,.jpg,.jpeg,.xml,application/pdf,image/png,image/jpeg,application/xml"
           style={{ display: "none" }}
           onChange={onFilesSelected}
         />
@@ -107,7 +107,7 @@ export default function UploadScreen() {
         </Text>
       </TouchableOpacity>
 
-      <Text style={styles.hint}>PDF, PNG ou XML (m\u00e1x. 20MB cada, m\u00faltiplos permitidos)</Text>
+      <Text style={styles.hint}>PDF, PNG, JPG ou XML (m\u00e1x. 20MB cada, m\u00faltiplos permitidos)</Text>
 
       {files.length > 0 && (
         <FlatList

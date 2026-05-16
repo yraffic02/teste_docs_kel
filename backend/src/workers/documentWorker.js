@@ -1,7 +1,9 @@
 const documentQueue = require("../queues/documentQueue");
-const ocrService = require("../services/ocrService");
+const { createDefaultOcrService } = require("../services/ocr/OcrService");
 const { Document, ExtractedPattern } = require("../models");
 const logger = require("../shared/logger");
+
+const ocrService = createDefaultOcrService();
 
 documentQueue.process(async (job) => {
   const { documentId } = job.data;

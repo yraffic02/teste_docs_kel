@@ -132,6 +132,7 @@ async function correctPatterns(req, res, next) {
 const MIME_LABEL = {
   "application/pdf": "PDF",
   "image/png": "PNG",
+  "image/jpeg": "JPG",
   "application/xml": "XML",
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "XLSX",
 };
