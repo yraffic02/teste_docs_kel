@@ -53,6 +53,33 @@ describe("extractPatterns", () => {
     expect(result.filter((p) => p.type === "date")).toHaveLength(1);
     expect(result.filter((p) => p.type === "client")).toHaveLength(1);
   });
+
+  test("extracts document_number from RG format", () => {
+    const text = "RG: 12.345.678-9 do cidadao.";
+    const result = extractPatterns(text);
+    const docs = result.filter((p) => p.type === "document_number");
+    expect(docs).toHaveLength(1);
+    expect(docs[0].value).toBe("12.345.678-9");
+  });
+
+  test("extracts document_number from passport format", () => {
+    const text = "Passaporte AB1234567 do viajante.";
+    const result = extractPatterns(text);
+    const docs = result.filter((p) => p.type === "document_number");
+    expect(docs).toHaveLength(1);
+    expect(docs[0].value).toBe("AB1234567");
+  });
+
+  test("does not confuse CPF with document_number", () => {
+    const text = "CPF 529.982.247-25 e RG 12.345.678-9.";
+    const result = extractPatterns(text);
+    const cpfs = result.filter((p) => p.type === "cpf");
+    const docs = result.filter((p) => p.type === "document_number");
+    expect(cpfs).toHaveLength(1);
+    expect(docs).toHaveLength(1);
+    expect(cpfs[0].value).toBe("529.982.247-25");
+    expect(docs[0].value).toBe("12.345.678-9");
+  });
 });
 
 describe("extractLabeledFields", () => {

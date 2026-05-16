@@ -2,6 +2,7 @@ const CPF_REGEX = /\b(\d{3}\.?\d{3}\.?\d{3}-?\d{2})\b/g;
 const CNPJ_REGEX = /\b(\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2})\b/g;
 const CURRENCY_REGEX = /(?:R\$|USD|EUR)\s*(\d{1,3}(?:\.\d{3})*(?:,\d{2})?|\d+(?:\.\d{2})?)/g;
 const DATE_REGEX = /\b(\d{2}[/-]\d{2}[/-]\d{2,4}|\d{4}[/-]\d{2}[/-]\d{2})\b/g;
+const DOC_NUMBER_REGEX = /\b((?:\d{1,2}\.\d{3}\.\d{3}-[\dxX])|[A-Z]{2}\d{6,8})\b/g;
 
 const STOP_WORDS = "nome|cliente|cpf|cnpj|data|telefone|endereço|número|email|valor|observação|obs|pagamento|ref|quantidade|descrição";
 
@@ -47,6 +48,9 @@ function extractPatterns(text) {
   const dates = text.match(DATE_REGEX) || [];
   dates.forEach((v) => patterns.push({ type: "date", value: v }));
 
+  const docNumbers = text.match(DOC_NUMBER_REGEX) || [];
+  docNumbers.forEach((v) => patterns.push({ type: "document_number", value: v }));
+
   const labeled = extractLabeledFields(text);
   patterns.push(...labeled);
 
@@ -60,4 +64,5 @@ module.exports = {
   CNPJ_REGEX,
   CURRENCY_REGEX,
   DATE_REGEX,
+  DOC_NUMBER_REGEX,
 };

@@ -6,6 +6,7 @@ module.exports = {
   allowedMimes: {
     pdf: "application/pdf",
     png: "image/png",
+    jpg: "image/jpeg",
     xml: "application/xml",
     xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   },

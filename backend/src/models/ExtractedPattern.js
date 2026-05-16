@@ -14,7 +14,7 @@ const ExtractedPattern = sequelize.define(
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM("cpf", "cnpj", "currency", "date", "name", "client", "value", "total_value"),
+      type: DataTypes.ENUM("cpf", "cnpj", "currency", "date", "name", "client", "value", "total_value", "document_number"),
       allowNull: false,
     },
     value: {
